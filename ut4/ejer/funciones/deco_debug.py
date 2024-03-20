@@ -22,13 +22,26 @@ https://aprendepython.es/core/datatypes/strings/#modo-debug
 
 
 def debug(func):
-    def avg(*values: int) -> float:
-        return sum(values) / len(values)
-    return avg
+    def wrapper (*args, **kwargs):
+        print(f"func={func.__name__}")
+        print(f"args={args}")
+        print(f"kwargs={kwargs}")
+        result = func(*args, **kwargs)
+        print(f"result={result}")
+
+    return result
+return wrapper
+
 
 @debug 
+   def avg(*values: int) -> float:
+        return sum(values) / len(values)
+       return avg
 
-    print(f'{}')
-    
     
     avg(4, 3, 9, 7, 2, 8)
+
+
+
+
+
